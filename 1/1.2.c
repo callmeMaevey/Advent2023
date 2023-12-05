@@ -22,7 +22,7 @@ char getNumberFromWord(char* section){
     }
 
     //then 4 lenght words
-    if(strlen(section)>=4){
+    if(strlen(section)>=4 && out=='\0'){
         char* names[4][2] = {{"four","4"}, {"five","5"}, {"nine","9"}};
         for(int index = 0; index<3; index++){
             if(strncmp(section, *(names+index)[0], sizeof(char)*4)==0){ //compares 4 chars
@@ -33,7 +33,7 @@ char getNumberFromWord(char* section){
 
     // what the hell am I writing right now...
     //then 5 lenght words
-    if(strlen(section)>=5){
+    if(strlen(section)>=5 && out=='\0'){
         char* names[5][2] = {{"three","3"},  {"seven","7"}, {"eight","8"}}; //compares 5 chars
         for(int index = 0; index<3; index++){
             if(strncmp(section, *(names+index)[0], sizeof(char)*5)==0){
