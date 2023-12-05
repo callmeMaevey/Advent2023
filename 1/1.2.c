@@ -21,7 +21,7 @@ char getNumberFromWord(char* section){
         }
     }
 
-    //then 4 lenght words
+    //then 4 length words
     if(strlen(section)>=4 && out=='\0'){
         char* names[4][2] = {{"four","4"}, {"five","5"}, {"nine","9"}};
         for(int index = 0; index<3; index++){
@@ -31,8 +31,7 @@ char getNumberFromWord(char* section){
         }
     }
 
-    // what the hell am I writing right now...
-    //then 5 lenght words
+    //then 5 length words
     if(strlen(section)>=5 && out=='\0'){
         char* names[5][2] = {{"three","3"},  {"seven","7"}, {"eight","8"}}; //compares 5 chars
         for(int index = 0; index<3; index++){
@@ -54,7 +53,7 @@ char getFirst(char *line) {
         else{ retVal = getNumberFromWord(line+offset); } 
         // getNubmerFromWord returns \0 on fail so the loop keeps looping.
         offset++;
-    }//walks forward until digit char is found
+    }//walks forward until digit or word is found
     return retVal;
 }
 
@@ -67,7 +66,7 @@ char getLast(char *line) {
             retVal = line[offset];
         }
         else{ retVal = getNumberFromWord(line+offset); }
-    }//walks backwards until digit is found
+    }//walks backwards until digit or word is found
     return retVal;
 }
 
