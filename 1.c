@@ -5,31 +5,31 @@
 
 char getFirst(char *line) {
     char retVal = '\0'; // \0 means not found
-    char* value = calloc( sizeof(' '), strlen(line) );
-    strcpy(value, line);
+    // char* value = calloc( sizeof(' '), strlen(line) );
+    // strcpy(value, line);
     int offset = 0;
     while (offset < strlen(line) && retVal == '\0') {
-        if ( isdigit( *(value + offset) )) {
-            retVal = value[offset];
+        if ( isdigit( *(line + offset) )) {
+            retVal = line[offset];
         }
         offset++;
     }
-    free(value);
+    // free(value);
     return retVal;
 }
 
 char getLast(char *line) {
     char retVal = '\0'; // \0 means not found
-    char* value = calloc( sizeof(' '), strlen(line) );
-    strcpy(value, line);
+    // char* value = calloc( sizeof(' '), strlen(line) );
+    // strcpy(value, line);
     int offset = strlen(line);
     while (offset > 0 && retVal == '\0') {
         --offset;
-        if ( isdigit( *(value + offset) )) {
-            retVal = value[offset];
+        if ( isdigit( *(line + offset) )) {
+            retVal = line[offset];
         }
     }
-    free(value);
+    // free(value);
     return retVal;
 }
 
