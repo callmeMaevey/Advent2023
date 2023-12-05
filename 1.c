@@ -7,6 +7,16 @@
 #include <string.h>
 #include <ctype.h>
 
+char getNumberWord(char* section){
+    char** names = {"one\0", "two\0", "three\0", "four\0", "five\0", "six\0", "seven\0", "eight\0", "nine\0"};
+    //jk not doing part 2
+    for(int index = names; index<9; index++){
+        if(strcmp(section, names+index)==0){
+
+        }
+    }
+}
+
 char getFirst(char *line) {
     char retVal = '\0'; // \0 means not found
     int offset = 0;
