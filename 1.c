@@ -7,14 +7,40 @@
 #include <string.h>
 #include <ctype.h>
 
-char getNumberWord(char* section){
-    char** names = {"one\0", "two\0", "three\0", "four\0", "five\0", "six\0", "seven\0", "eight\0", "nine\0"};
+char getNumberFromWord(char* section){
+    char out = '\0';
+    
     //jk not doing part 2
-    for(int index = names; index<9; index++){
-        if(strcmp(section, names+index)==0){
-
+    //oops Im doing it
+    if(strlen(section)>=3){
+        char* names[3][2] = {{"one","1"}, {"two","2"}, {"six","6"}};
+        for(int index = 0; index<3; index++){
+            if(strncmp(section, *(names+index)[0], sizeof(char)*3)==0){
+                out = *(names[index])[1];
+            }
         }
     }
+    
+    if(strlen(section)>=4){
+        char* names[4][2] = {{"four","4"}, {"five","5"}, {"nine","9"}};
+        for(int index = 0; index<3; index++){
+            if(strncmp(section, *(names+index)[0], sizeof(char)*4)==0){
+                out = *(names[index])[1];
+            }
+        }
+    }
+    // what the hell am I writing right now...
+    
+    if(strlen(section)>=5){
+        char* names[5][2] = {{"three","3"},  {"seven","7"}, {"eight","8"}};
+        for(int index = 0; index<3; index++){
+            if(strncmp(section, *(names+index)[0], sizeof(char)*5)==0){
+                out = *(names[index])[1];
+            }
+        }
+    }
+
+    return out;
 }
 
 char getFirst(char *line) {
@@ -24,6 +50,7 @@ char getFirst(char *line) {
         if ( isdigit( *(line + offset) )) {
             retVal = line[offset];
         }
+        else{ retVal = getNumberFromWord(line+offset); }
         offset++;
     }//walks forward until digit char is found
     return retVal;
@@ -37,11 +64,16 @@ char getLast(char *line) {
         if ( isdigit( *(line + offset) )) {
             retVal = line[offset];
         }
+        else{ retVal = getNumberFromWord(line+offset); }
     }//walks backwards until digit is found
     return retVal;
 }
 
 int main(int argc, char** argv) {
+
+    // printf("%c\n",getFirst("six9"));
+    // printf("%c\n",getLast("six9seven"));
+    // printf("%c\n",getLast("fourtyfive6"));
     
     if(argc < 2){ printf("call with path as argv[1]\n"); return -1; } // prevents errors
     int maxlen = 64;
