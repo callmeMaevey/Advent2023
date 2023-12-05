@@ -34,10 +34,12 @@ char getLast(char *line) {
 }
 
 int main() {
+    char first = getFirst("6your7mom");
+    printf("%i\n", atoi(&first));
 
-    printf("%c\n", getFirst("6your7mom"));
+    char last = getLast("8your9mom");
+    printf("%c\n", last);
 
-    printf("%c\n", getLast("6your7mom"));
 
     return 0;
 }
