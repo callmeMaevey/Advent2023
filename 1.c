@@ -33,13 +33,33 @@ char getLast(char *line) {
     return retVal;
 }
 
-int main() {
-    char first = getFirst("6your7mom");
-    printf("%i\n", atoi(&first));
-
-    char last = getLast("8your9mom");
-    printf("%c\n", last);
 
 
+int main(int argc, char** argv) {
+
+    if(argc < 2){ return -1; }
+
+//file setup
+    int maxlen = 64;
+    char *line = (char *)malloc(sizeof(char) * maxlen);
+
+    FILE* file = fopen( argv[1], "r");
+    if(file==NULL){
+        printf("filenotfound\n");
+        return -1;
+    }
+    char values[2];
+    int total = 0;
+    while(fgets(line, maxlen, file)){
+
+        values[0] = getFirst(line);
+        values[1] = getLast(line);
+        printf("%i\n",atoi(values));
+        total+=atoi(values);
+    }
+    fclose(file);
+    free(line);
+    
+    printf("%i\n",total);
     return 0;
 }
