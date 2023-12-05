@@ -15,16 +15,29 @@ char getFirst(char *line) {
         offset++;
     }
     free(value);
-    printf("%c\n", retVal);
     return retVal;
 }
 
+char getLast(char *line) {
+    char retVal = '\0'; // \0 means not found
+    char* value = calloc( sizeof(' '), strlen(line) );
+    strcpy(value, line);
+    int offset = strlen(line);
+    while (offset > 0 && retVal == '\0') {
+        --offset;
+        if ( isdigit( *(value + offset) )) {
+            retVal = value[offset];
+        }
+    }
+    free(value);
+    return retVal;
+}
 
 int main() {
 
     printf("%c\n", getFirst("6your7mom"));
 
-    // printf("%i", getLast("your7mom"));
+    printf("%c\n", getLast("6your7mom"));
 
     return 0;
 }
