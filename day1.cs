@@ -17,7 +17,7 @@ class day1 {
 
     }
 
-    public static void main(){
+    public static void Main(string[] args){ //same as java!
         string path = "1.txt";
         foreach (string line in readFile(path)){
             Console.WriteLine(getFirst(line))
