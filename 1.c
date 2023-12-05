@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 char getFirst(char *line) {
-    char retVal = '\0'; // -1 means not found
+    char retVal = '\0'; // \0 means not found
     char* value = calloc( sizeof(' '), strlen(line) );
     strcpy(value, line);
     int offset = 0;
