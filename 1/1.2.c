@@ -10,7 +10,7 @@
 
 char getNumberFromWord(char* section){
     char out = '\0';
-   //needs to be broken out into serach lenghts to prevent segfaults
+   //needs to be broken out into search lenghts to prevent segfaults
    //so three length words
     if(strlen(section)>=3){
         char* names[3][2] = {{"one","1"}, {"two","2"}, {"six","6"}};
@@ -72,10 +72,6 @@ char getLast(char *line) {
 }
 
 int main(int argc, char** argv) {
-
-    // printf("%c\n",getFirst("six9"));
-    // printf("%c\n",getLast("six9seven"));
-    // printf("%c\n",getLast("fourtyfive6"));
     
     if(argc < 2){ printf("call with path as argv[1]\n"); return -1; } // prevents errors
     int maxlen = 64;
