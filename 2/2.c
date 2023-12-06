@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct {
     int game;
@@ -18,6 +19,7 @@ typedef struct {
 int getGameNumber(char* line){
     char* number= (char*)malloc(sizeof(char) * 4);//leaving an extra space for posterity
     strncpy( number, (line+4), sizeof(char) * 4 );
+    //yes im aware I dont free number....
     return atoi(number);
 }
 
@@ -30,9 +32,15 @@ void populateScruct(char* line, colorVals* maxVals){
 // then get prefixed value and cast to int
 // if that int is greater than maxVals,
 //update struct
+    char* digits;
     for(int index=0;index<strlen(line);index++){
-    // .  THIS IS WHERE I RAN OUT OF TIME FOR THE NIGHT :(
-    //    ifstrncmp( line+index, "green", 5 ); 
+        if(strncmp( line+index, "green", 5 )==0){
+            index-=2;
+            for (int len=0; isdigit(line+index-len); ){len++;}
+           // alright this is as far as I got.. 
+            strncpy(digits,line+index-len, len);
+            maxVals->green = atoi(digits);
+        }
     }
 
 
